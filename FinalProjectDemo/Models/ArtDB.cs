@@ -78,7 +78,6 @@ namespace FavoritesDemo.Models
 		{
 			// Notice how we do a join here!
 
-
 			Dictionary<Favorite, ArtMiniDetails> result = null;
 			using (ArtContext ctx = new ArtContext())
 			{
@@ -87,11 +86,7 @@ namespace FavoritesDemo.Models
 							where fav.username == username
 							select new { fav, detail };
 
-				//var result2 = query.ToDictionary<Favorite, ArtMiniDetails>(f => f, m => m);
-
 				result = query.ToDictionary(x => x.fav, x => x.detail);
-
-				//result = ctx.UserFavorites.Where(s => s.username == username).ToList();
 			}
 			return result;
 		}
