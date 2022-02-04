@@ -1,4 +1,4 @@
-﻿@model Dictionary<Favorite, ArtMiniDetails>
+﻿@model List<JoinResults>
 @{
     ViewData["Title"] = "Welcome";
 }
@@ -17,8 +17,9 @@ else
     foreach (var fav in Model)
 	{
 		<div>
-			Name: @fav.Value.title<br />
-			Notes: @fav.Key.mynotes<br />
+            <b>@fav.title</b> by <i>@fav.artist</i><br />
+			<img src="@fav.thumbnail_url" />
+			Notes: @fav.mynotes<br />
 		</div>
 	}
 }

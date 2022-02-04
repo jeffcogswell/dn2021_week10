@@ -1,5 +1,6 @@
 ﻿@model ArtworksResponse
 @{
+    string base_url = Model.config.iiif_url;
     ViewData["Title"] = "ViewArt";
 }
 
@@ -11,6 +12,7 @@
 		@art.title<br />
 		@art.artist_title<br />
 		@art.date_display<br />
+		<img src="@base_url/@art.image_id/full/200,/0/default.jpg" />
 		<a href="/home/addfav?id=@art.id">Add Favorite</a>
 	</div>
 }

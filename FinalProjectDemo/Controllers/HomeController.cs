@@ -42,7 +42,7 @@ namespace FavoritesDemo.Controllers
 				}
 			}
 
-			Dictionary<Favorite, ArtMiniDetails> favs = ArtDB.GetFavorites(username); 
+			List<JoinResults> favs = ArtDB.GetFavorites(MyUser.Username); 
 			return View(favs);
 		}
 
