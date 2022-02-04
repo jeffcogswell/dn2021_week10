@@ -1,0 +1,16 @@
+﻿@model ArtworksResponse
+@{
+    ViewData["Title"] = "ViewArt";
+}
+
+<h1>ViewArt</h1>
+
+@foreach (ArtworkResponse art in Model.data)
+{
+	<div style="margin:1em; background-color:azure">
+		@art.title<br />
+		@art.artist_title<br />
+		@art.date_display<br />
+		<a href="/home/addfav?id=@art.id">Add Favorite</a>
+	</div>
+}

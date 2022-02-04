@@ -1,0 +1,24 @@
+﻿@model Dictionary<Favorite, ArtMiniDetails>
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h1>Welcome @MyUser.Username</h1>
+
+Want to see more art? <a href="/home/viewart">Click here!</a>
+
+<h2>Favorites</h2>
+@if (Model == null)
+{
+	<p>You don't have any favorites! <a href="/home/viewart">Click here</a> to find some!</p>
+}
+else
+{
+    foreach (var fav in Model)
+	{
+		<div>
+			Name: @fav.Value.title<br />
+			Notes: @fav.Key.mynotes<br />
+		</div>
+	}
+}
