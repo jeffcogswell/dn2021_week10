@@ -56,7 +56,17 @@ namespace FavoritesDemo.Models
 		public string title { get; set; }
 		public string thumbnail_url { get; set; }
 		public string artist { get; set; }
+	}
 
+	public class JoinResults
+	{
+		public int id { get; set; }
+		public string username { get; set; }
+		public int artwork_id { get; set; }
+		public string title { get; set; }
+		public string thumbnail_url { get; set; }
+		public string artist { get; set; }
+		public string mynotes { get; set; }
 	}
 
 
@@ -74,24 +84,22 @@ namespace FavoritesDemo.Models
 
 	public class ArtDB
 	{
-		public static Dictionary<Favorite, ArtMiniDetails> GetFavorites(string username)
+		public static List<JoinResults> GetFavorites(string username)
 		{
 			// Notice how we do a join here!
 
-
-			Dictionary<Favorite, ArtMiniDetails> result = null;
+			List<JoinResults> result = null;
 			using (ArtContext ctx = new ArtContext())
 			{
 				var query = from fav in ctx.UserFavorites
 							join detail in ctx.ArtMiniDetails on fav.artwork_id equals detail.id // gotta use "equals" in join on clause for some reason
 							where fav.username == username
-							select new { fav, detail };
+							select new JoinResults() { 
+								id = fav.id, username = fav.username, artwork_id = detail.id,
+								title = detail.title, thumbnail_url = detail.thumbnail_url,
+								artist = detail.artist, mynotes = fav.mynotes };
 
-				//var result2 = query.ToDictionary<Favorite, ArtMiniDetails>(f => f, m => m);
-
-				result = query.ToDictionary(x => x.fav, x => x.detail);
-
-				//result = ctx.UserFavorites.Where(s => s.username == username).ToList();
+				result = query.ToList();
 			}
 			return result;
 		}
@@ -117,7 +125,7 @@ namespace FavoritesDemo.Models
 				minidetail.id = detail.data.id;
 				minidetail.title = detail.data.title;
 				minidetail.artist = detail.data.artist_title;
-				minidetail.thumbnail_url = "";
+				minidetail.thumbnail_url = $"{detail.config.iiif_url}/{detail.data.image_id }/full/100,/0/default.jpg";
 
 				// Now we need to see if the detail already exists in the table, and if not, add it first.
 
