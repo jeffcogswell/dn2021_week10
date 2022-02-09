@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIProxyDemo", "APIProxyDemo\APIProxyDemo.csproj", "{5C774E4B-6E78-43EE-8B01-902AFD552482}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{5F88B83F-ED0E-46C0-96A8-8E3B915347FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F88B83F-ED0E-46C0-96A8-8E3B915347FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F88B83F-ED0E-46C0-96A8-8E3B915347FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C774E4B-6E78-43EE-8B01-902AFD552482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C774E4B-6E78-43EE-8B01-902AFD552482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C774E4B-6E78-43EE-8B01-902AFD552482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C774E4B-6E78-43EE-8B01-902AFD552482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
